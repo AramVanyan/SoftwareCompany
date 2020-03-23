@@ -24,7 +24,14 @@ public class Main {
         DepartmentService.create(new Department(2,"Programming"));
         DepartmentService.create(new Department(3,"Law"));
         System.out.println(DepartmentService.getAllEmployees());
-        DepartmentService.assignToDepartment();
-
+        DepartmentService.assignToDepartment(1,new ArrayList<Employee>(){
+            {
+                add(new Employee(1,"Smith",1));
+                add(new Employee(2,"John",1));
+            }
+        });
+        System.out.println(DepartmentService.getAllEmployees());
+        DepartmentService.update(1,listOfEmployees);
+        System.out.println(DepartmentService.getAllEmployees());
     }
 }

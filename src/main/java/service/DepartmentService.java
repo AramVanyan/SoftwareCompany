@@ -18,14 +18,19 @@ public class DepartmentService {
         departments.put(department,new ArrayList<Employee>());
     }
 
-    public static void update(Department department,ArrayList<Employee> employees) {
-        ArrayList<Employee> oldEmployeesList = departments.get(department);
-        oldEmployeesList = employees;
+    public static void update(int departmentId,ArrayList<Employee> employees) {
+        departments.entrySet().stream()
+                .filter(e -> e.getKey().getId() == departmentId)
+                .forEach(e -> {
+                    e.getValue().clear();
+                    e.getValue().addAll(employees);
+                });
     }
 
-    public static void assignToDepartment(Department department,ArrayList<Employee> employees) {
-        ArrayList<Employee> oldEmployeesList = departments.get(department);
-        oldEmployeesList.addAll(employees);
+    public static void assignToDepartment(int departmentId,ArrayList<Employee> employees) {
+        departments.entrySet().stream()
+                .filter(e -> e.getKey().getId() == departmentId)
+                .forEach(e -> e.getValue().addAll(employees));
     }
 
     public static List<Employee> getAllEmployees() {

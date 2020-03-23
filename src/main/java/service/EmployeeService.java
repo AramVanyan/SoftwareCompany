@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class EmployeeService {
     private static ArrayList<Employee> listOfEmployees;
     static {
-        listOfEmployees = new ArrayList<Employee>();
+        listOfEmployees = new ArrayList<>();
     }
 
     public static void create(Employee employee) {
