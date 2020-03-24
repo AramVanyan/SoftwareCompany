@@ -33,5 +33,6 @@ public class Main {
         System.out.println(DepartmentService.getAllEmployees());
         DepartmentService.update(1,listOfEmployees);
         System.out.println(DepartmentService.getAllEmployees());
+
     }
 }

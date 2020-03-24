@@ -14,23 +14,26 @@ public class DepartmentService {
     static {
         departments = new HashMap<>();
     }
-    public static void create(Department department) {
+    public static boolean create(Department department) {
         departments.put(department,new ArrayList<Employee>());
+        return departments.size() > 0;
     }
 
-    public static void update(int departmentId,ArrayList<Employee> employees) {
+    public static Map<Department, ArrayList<Employee>> update(int departmentId,ArrayList<Employee> employees) {
         departments.entrySet().stream()
                 .filter(e -> e.getKey().getId() == departmentId)
                 .forEach(e -> {
                     e.getValue().clear();
                     e.getValue().addAll(employees);
                 });
+        return departments;
     }
 
-    public static void assignToDepartment(int departmentId,ArrayList<Employee> employees) {
+    public static Map<Department, ArrayList<Employee>> assignToDepartment(int departmentId,ArrayList<Employee> employees) {
         departments.entrySet().stream()
                 .filter(e -> e.getKey().getId() == departmentId)
                 .forEach(e -> e.getValue().addAll(employees));
+        return departments;
     }
 
     public static List<Employee> getAllEmployees() {
